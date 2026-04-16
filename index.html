@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Hard 😤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #90EE90 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-size: 2rem;
+        }
+        
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+        }
+        
+        /* Офис/Комната */
+        .room {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 300px;
+            background: linear-gradient(180deg, #f5f5dc 0%, #e8e8d0 100%);
+            border: 5px solid #8B4513;
+            border-radius: 10px;
+        }
+        
+        /* Стол */
+        .desk {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 15px;
+            background: #8B4513;
+            border-radius: 3px;
+        }
+        
+        /* Компьютер */
+        .computer {
+            position: absolute;
+            bottom: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 110px;
+            background: #333;
+            border-radius: 10px;
+            padding: 8px;
+        }
+        
+        .screen {
+            width: 100%;
+            height: 85px;
+            background: #000;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .screen-content {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            text-align: center;
+        }
+        
+        .screen-text {
+            font-size: 8px;
+            color: #0f0;
+            animation: typing 3s infinite;
+        }
+        
+        @keyframes typing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .monitor-stand {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background: #444;
+        }
+        
+        .monitor-base {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 8px;
+            background: #444;
+            border-radius: 3px;
+        }
+        
+        /* Виталик */
+        .vitalik {
+            position: absolute;
+            bottom: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .vitalik-body {
+            width: 60px;
+            height: 50px;
+            background: #4169E1;
+            border-radius: 10px 10px 5px 5px;
+            position: relative;
+        }
+        
+        .vitalik-head {
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background: #FFDAB9;
+            border-radius: 50%;
+        }
+        
+        /* Очки */
+        .glasses {
+            position: absolute;
+            top: 12px;
+            left: 5px;
+            width: 30px;
+            height: 10px;
+            border: 3px solid #333;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .glasses::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 3px;
+            background: #333;
+        }
+        
+        /* Грустное лицо */
+        .sad-mouth {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 5px;
+            border: 2px solid #333;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        /* Руки на клавиатуре */
+        .vitalik-hands {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .hand {
+            width: 25px;
+            height: 15px;
+            background: #FFDAB9;
+            border-radius: 5px;
+        }
+        
+        /* Анимация вздохов */
+        @keyframes sigh {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-5deg); }
+            50% { transform: translateX(-50%) rotate(0deg) scale(1.05); }
+            75% { transform: translateX(-50%) rotate(5deg); }
+        }
+        
+        .vitalik {
+            animation: sigh 8s ease-in-out infinite;
+        }
+        
+        /* Сердечко когда отвлекается */
+        .heart {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            opacity: 0;
+            animation: heartPop 8s infinite;
+        }
+        
+        @keyframes heartPop {
+            0%, 20% { opacity: 0; }
+            25% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+            30%, 100% { opacity: 0; }
+        }
+        
+        /* Лиса Серега */
+        .fox {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            transition: all 0.5s ease;
+        }
+        
+        .fox-body {
+            position: absolute;
+            bottom: 0;
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C00 100%);
+            border-radius: 30px 30px 20px 20px;
+        }
+        
+        .fox-head {
+            position: absolute;
+            bottom: 25px;
+            left: 35px;
+            width: 40px;
+            height: 35px;
+            background: #FF6B35;
+            border-radius: 50% 50% 40% 40%;
+        }
+        
+        .fox-ear {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid #FF6B35;
+        }
+        
+        .fox-ear.left {
+            bottom: 55px;
+            left: 35px;
+            transform: rotate(-15deg);
+        }
+        
+        .fox-ear.right {
+            bottom: 55px;
+            left: 55px;
+            transform: rotate(15deg);
+        }
+        
+        .fox-ear-inner {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid #FFDAB9;
+        }
+        
+        .fox-ear-inner.left {
+            bottom: 58px;
+            left: 38px;
+            transform: rotate(-15deg);
+        }
+        
+        .fox-ear-inner.right {
+            bottom: 58px;
+            left: 58px;
+            transform: rotate(15deg);
+        }
+        
+        .fox-snout {
+            position: absolute;
+            bottom: 20px;
+            left: 55px;
+            width: 20px;
+            height: 15px;
+            background: #FFDAB9;
+            border-radius: 50%;
+        }
+        
+        .fox-nose {
+            position: absolute;
+            bottom: 25px;
+            left: 70px;
+            width: 8px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+        }
+        
+        .fox-eye {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+            bottom: 40px;
+        }
+        
+        .fox-eye.left { left: 45px; }
+        .fox-eye.right { left: 60px; }
+        
+        .fox-tail {
+            position: absolute;
+            bottom: 5px;
+            left: -20px;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(90deg, #FF8C00 0%, #FF6B35 50%, #fff 100%);
+            border-radius: 20px 0 20px 20px;
+            transform-origin: right center;
+            animation: wagTail 0.3s ease-in-out infinite;
+        }
+        
+        @keyframes wagTail {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        /* Мышка Жанна */
+        .mouse {
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            transition: all 0.5s ease;
+        }
+        
+        .mouse-body {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 35px;
+            background: #d4a574;
+            border-radius: 25px 25px 18px 18px;
+        }
+        
+        .mouse-head {
+            position: absolute;
+            bottom: 18px;
+            left: 28px;
+            width: 30px;
+            height: 28px;
+            background: #d4a574;
+            border-radius: 15px;
+        }
+        
+        .mouse-ear {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #f5c6a5;
+            border-radius: 50%;
+            border: 2px solid #d4a574;
+        }
+        
+        .mouse-ear.left {
+            bottom: 40px;
+            left: 25px;
+        }
+        
+        .mouse-ear.right {
+            bottom: 43px;
+            left: 40px;
+        }
+        
+        .mouse-eye {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            bottom: 28px;
+        }
+        
+        .mouse-eye.left { left: 35px; }
+        .mouse-eye.right { left: 48px; }
+        
+        .mouse-nose {
+            position: absolute;
+            bottom: 22px;
+            left: 55px;
+            width: 8px;
+            height: 6px;
+            background: #ff9999;
+            border-radius: 50%;
+        }
+        
+        .mouse-tail {
+            position: absolute;
+            bottom: 5px;
+            left: -15px;
+            width: 25px;
+            height: 4px;
+            background: #d4a574;
+            border-radius: 5px;
+            transform-origin: right center;
+            animation: wagTail 0.4s ease-in-out infinite;
+        }
+        
+        /* Бег по кругу */
+        @keyframes runAround {
+            0% { transform: translate(0, 0) scaleX(1); }
+            25% { transform: translate(300px, -100px) scaleX(1); }
+            50% { transform: translate(350px, 50px) scaleX(-1); }
+            75% { transform: translate(50px, 80px) scaleX(-1); }
+            100% { transform: translate(0, 0) scaleX(1); }
+        }
+        
+        .chasing {
+            animation: runAround 5s ease-in-out infinite;
+        }
+        
+        /* Позиции */
+        .fox.chasing {
+            top: 100px;
+            left: 100px;
+        }
+        
+        .mouse.chasing {
+            top: 180px;
+            left: 150px;
+            animation-delay: -2.5s;
+        }
+        
+        /* Удар */
+        @keyframes hit {
+            0%, 80%, 100% { transform: scale(1); }
+            85% { transform: scale(1.2); }
+        }
+        
+        .fox.hitting .fox-tail,
+        .mouse.hitting .mouse-tail {
+            animation: hit 5s infinite;
+        }
+        
+        /* Облачка */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.8;
+        }
+        
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 30px;
+            left: 50px;
+            animation: floatCloud 20s linear infinite;
+        }
+        
+        .cloud2 {
+            width: 80px;
+            height: 30px;
+            top: 60px;
+            right: 100px;
+            animation: floatCloud 25s linear infinite reverse;
+        }
+        
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(50px); }
+            100% { transform: translateX(0); }
+        }
+        
+        /* Трава/поляна */
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(180deg, #90EE90 0%, #228B22 100%);
+        }
+        
+        .grass-blade {
+            position: absolute;
+            bottom: 50px;
+            width: 8px;
+            height: 20px;
+            background: #228B22;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .grass-blade:nth-child(1) { left: 10%; }
+        .grass-blade:nth-child(2) { left: 25%; height: 25px; }
+        .grass-blade:nth-child(3) { left: 40%; }
+        .grass-blade:nth-child(4) { left: 60%; height: 22px; }
+        .grass-blade:nth-child(5) { left: 75%; }
+        .grass-blade:nth-child(6) { left: 90%; height: 28px; }
+        
+        /* Надпись */
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            background: rgba(255,255,255,0.8);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        /* Тайтл */
+        .title {
+            text-align: center;
+            color: #333;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        
+        .title span {
+            display: inline-block;
+            animation: bounce 0.5s ease infinite;
+        }
+        
+        .title span:nth-child(1) { color: #FF6B35; }
+        .title span:nth-child(2) { color: #d4a574; }
+        .title span:nth-child(3) { color: #4169E1; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">
+        <span>🦊</span> <span>🐭</span> <span>💼</span>
+    </h1>
+    
+    <div class="scene">
+        <!-- Облачка -->
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        
+        <!-- Лиса -->
+        <div class="fox chasing">
+            <div class="fox-tail"></div>
+            <div class="fox-body"></div>
+            <div class="fox-head"></div>
+            <div class="fox-ear left"></div>
+            <div class="fox-ear right"></div>
+            <div class="fox-ear-inner left"></div>
+            <div class="fox-ear-inner right"></div>
+            <div class="fox-eye left"></div>
+            <div class="fox-eye right"></div>
+            <div class="fox-snout"></div>
+            <div class="fox-nose"></div>
+        </div>
+        
+        <!-- Мышь -->
+        <div class="mouse chasing">
+            <div class="mouse-tail"></div>
+            <div class="mouse-body"></div>
+            <div class="mouse-head"></div>
+            <div class="mouse-ear left"></div>
+            <div class="mouse-ear right"></div>
+            <div class="mouse-eye left"></div>
+            <div class="mouse-eye right"></div>
+            <div class="mouse-nose"></div>
+        </div>
+        
+        <!-- Комната -->
+        <div class="room">
+            <div class="grass">
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+            </div>
+            
+            <!-- Виталик за работой -->
+            <div class="vitalik">
+                <div class="heart">💕</div>
+                <div class="vitalik-head">
+                    <div class="glasses"></div>
+                    <div class="sad-mouth"></div>
+                </div>
+                <div class="vitalik-body">
+                    <div class="vitalik-hands">
+                        <div class="hand"></div>
+                        <div class="hand"></div>
+                    </div>
+                </div>
+                <div class="computer">
+                    <div class="screen">
+                        <div class="screen-content">
+                            <div class="screen-text">WORK... WORK... WORK...</div>
+                            <div>📊</div>
+                        </div>
+                    </div>
+                    <div class="monitor-stand"></div>
+                    <div class="monitor-base"></div>
+                </div>
+            </div>
+            
+            <div class="desk"></div>
+        </div>
+        
+        <div class="caption">🦊 Серега и 🐭 Жанна: "Погнали!"<br>💼 Виталик: "Ребята, я работаю..." 😤</div>
+    </div>
+    
+    <script>
+        // Добавляем разнообразие анимации
+        const vitalik = document.querySelector('.vitalik');
+        const heart = document.querySelector('.heart');
+        
+        setInterval(() => {
+            // Случайные вздохи
+            if (Math.random() > 0.7) {
+                vitalik.style.animation = 'sigh 2s ease-in-out';
+                setTimeout(() => {
+                    vitalik.style.animation = 'sigh 8s ease-in-out infinite';
+                }, 2000);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
